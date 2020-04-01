@@ -1,0 +1,3 @@
+startPage = index.html
+Static file server running @ http://localhost:8000/index.html
+CTRL + C to shut down

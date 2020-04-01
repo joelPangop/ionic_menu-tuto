@@ -1,0 +1,74 @@
+<ion-toolbar color="primary">
+    <ion-buttons size="2" slot="start" style="size: 100px">
+        <ion-menu-button></ion-menu-button>
+        <ion-title size="10" style="width: -moz-fit-content">
+            <ion-label>
+                <div id="nav-logo">
+                    <ion-icon id="titleId" src="assets/e-com-img.svg"></ion-icon>
+                </div>
+            </ion-label>
+        </ion-title>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="platform.is('desktop') || platform.is('hybrid') && !platform.is('mobile')">
+        <ion-searchbar showCancelButton="focus" animated (ionInput)="onSearch($event)"
+                       (ionCancel)="onCancel($event)"></ion-searchbar>
+    </ion-buttons>
+    <ion-buttons *ngIf="isSearch">
+        <ion-searchbar showCancelButton="focus" animated (ionInput)="onSearch($event)"
+                       (ionCancel)="onCancel($event)"></ion-searchbar>
+    </ion-buttons>
+    <ion-buttons color="primary" slot="end" *ngIf="platform.is('desktop') || platform.is('hybrid') && !platform.is('mobile')">
+        <ion-row>
+            <ion-item lines="none">
+                <ion-button>
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-button (click)="showOptions($event, 'language')">
+                    <ion-icon src="assets/globe.svg"></ion-icon>
+                    <span>En</span>
+                </ion-button>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-button (click)="showOptions($event, 'currency')">
+                    <ion-icon src="assets/flag-for-flag-canada.svg"></ion-icon>
+                    <span>CAD</span>
+                </ion-button>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-button>
+                    <ion-icon slot="icon-only" src="assets/shopping-cart.svg"></ion-icon>
+                </ion-button>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-button>
+                    <ion-icon slot="icon-only" src="assets/notifications-sharp.svg"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-row>
+    </ion-buttons>
+    <ion-buttons color="primary" *ngIf="platform.is('mobile') || platform.is('ios') || platform.is('android')">
+        <ion-button (click)="openSearch()" *ngIf="!isSearch">
+            <ion-icon name="search"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="!isSearch">
+            <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="showOptions($event, 'language')" *ngIf="!isSearch">
+            <ion-icon src="assets/globe.svg"></ion-icon>
+            <span>En</span>
+        </ion-button>
+        <ion-button (click)="showOptions($event, 'currency')" *ngIf="!isSearch">
+            <ion-icon src="assets/flag-for-flag-canada.svg"></ion-icon>
+            <span>CAD</span>
+        </ion-button>
+        <ion-button *ngIf="!isSearch">
+            <ion-icon slot="icon-only" src="assets/shopping-cart.svg"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="!isSearch">
+            <ion-icon slot="icon-only" src="assets/notifications-sharp.svg"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
